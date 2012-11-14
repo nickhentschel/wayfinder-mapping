@@ -16,7 +16,6 @@ class UploadMap extends CI_Controller {
 			} else {
 				$data['error'] = 'Upload error. Please try again.';
 			}
-			$this->template->load('default', 'uploadmap', $data);
 		}
 
 		$this->template->load('default', 'uploadmap', $data);
