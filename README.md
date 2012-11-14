@@ -1,2 +1,2 @@
-wayfinder-mapping
+wayfinder-mapping application
 =================
