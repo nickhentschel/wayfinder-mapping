@@ -3,7 +3,10 @@
 class Main extends CI_Controller {
 
 	function index() {
-		echo 'hello world!';
+		$data = array(
+			'title' => 'Welcome to the Jungle'
+		);
+		$this->template->load('default', 'splash', $data);
 	}
 
 }
