@@ -7,6 +7,6 @@
 		echo form_upload('userfile');
 		echo form_submit('upload', 'Upload');
 		echo form_close();
+		echo form_textarea('description');
 		?>
 	</div>
-</div>
