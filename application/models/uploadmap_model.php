@@ -8,7 +8,7 @@ class Uploadmap_model extends CI_Model {
 		$this->uploadmap_path = realpath(APPPATH . "../assets/uploads");
 	}	
 
-	function do_upload() {
+	function do_upload($description) {
 
 		$config = array(
 			'allowed_types' => 'jpg|jpeg|png|gif',
@@ -20,10 +20,25 @@ class Uploadmap_model extends CI_Model {
 			// something went wrong, errors occurred
 			return false;
 		} else {
-			$image_data = $this->upload->data();
-			var_dump($image_data);
+			$this->update_db($this->upload->data(), $description);
+			//var_dump($image_data);
 			return true;
 		}
+	}
 
+	/*
+	 * Upload image data to database after uploading image to server  
+	 */
+	function update_db($image_data, $description) {
+		$this->db->insert('uploadmap',
+			array(
+				'id' => '',
+				'name' => $image_data['raw_name'],
+				'description' => $description,
+				'height' => $image_data['image_height'],
+				'width' => $image_data['image_width'],
+				'image_path' => $image_data['full_path']
+			)
+		);
 	}
 }
