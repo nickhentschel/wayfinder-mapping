@@ -26,8 +26,11 @@ class Uploadmap_model extends CI_Model {
 		}
 	}
 
-	/*
+	/**
 	 * Upload image data to database after uploading image to server  
+	 * @param  [array] $image_data  [uploaded image data]
+	 * @param  [string] $description [description of image, from post]
+	 * @return [type]
 	 */
 	function update_db($image_data, $description) {
 		$this->db->insert('uploadmap',
