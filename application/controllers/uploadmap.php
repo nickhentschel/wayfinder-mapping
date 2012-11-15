@@ -7,17 +7,17 @@ class UploadMap extends CI_Controller {
 			'title' => 'Upload a map'
 		);
 
-		$this->load->model('Uploadmap_model');
+		$this->load->model('Map_model');
 		$data['message'] = 'Select Image to Upload';
 
 		if($this->input->post('upload')) {
-			$success = $this->Uploadmap_model->do_upload($this->input->post('description'));
+			$success = $this->Map_model->do_upload($this->input->post('description'));
 			if($success) {
 				$data['message'] = 'Successful Upload!';
 			} else {
 				$data['message'] = 'Upload error. Please try again.';
 			}
-		}
+		}		
 
 		$this->template->load('default', 'uploadmap', $data);
 

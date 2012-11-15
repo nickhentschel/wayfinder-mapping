@@ -1,6 +1,10 @@
 <?php 
 
-class Uploadmap_model extends CI_Model {
+/**
+ * ToDo - add support for thumbnail generation to be used on the select image page
+ */
+
+class Map_model extends CI_Model {
 	
 	private $uploadmap_path;
 
@@ -48,5 +52,14 @@ class Uploadmap_model extends CI_Model {
 				'image_path' => $image_data['full_path']
 			)
 		);
+	}
+
+	/**
+	 * Get all images from database and return them to the model
+	 * @return [array] [an array of images from the uploadmap table]
+	 */
+	function get_all_images() {
+		$query = $this->db->get('uploadmap');
+		return($query->result());
 	}
 }
