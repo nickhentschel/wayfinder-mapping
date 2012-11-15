@@ -6,8 +6,13 @@ class Uploadmap_model extends CI_Model {
 
 	function __construct() {
 		$this->uploadmap_path = realpath(APPPATH . "../assets/uploads");
-	}	
+	}
 
+	/**
+	 * upload image to specified upload path
+	 * @param  [string] $description [a description of the image to be uploaded]
+	 * @return [boolean]             [returns true or false if successful or unsuccessful]
+	 */
 	function do_upload($description) {
 
 		$config = array(
@@ -28,7 +33,7 @@ class Uploadmap_model extends CI_Model {
 
 	/**
 	 * Upload image data to database after uploading image to server  
-	 * @param  [array] $image_data  [uploaded image data]
+	 * @param  [array] $image_data   [uploaded image data]
 	 * @param  [string] $description [description of image, from post]
 	 * @return [type]
 	 */
