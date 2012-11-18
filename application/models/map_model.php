@@ -42,10 +42,11 @@ class Map_model extends CI_Model {
 	 * @return [type]
 	 */
 	function update_db($image_data, $description) {
+		//var_dump($image_data);
 		$this->db->insert('uploadmap',
 			array(
 				'id' => '',
-				'name' => $image_data['raw_name'],
+				'name' => $image_data['file_name'],
 				'description' => $description,
 				'height' => $image_data['image_height'],
 				'width' => $image_data['image_width'],
