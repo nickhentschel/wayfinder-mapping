@@ -62,4 +62,15 @@ class Map_model extends CI_Model {
 		$query = $this->db->get('uploadmap');
 		return($query->result());
 	}
+
+
+	/**
+	 * Get a single image from the database based on an image id
+	 * @param  [int] $id  [an image id]
+	 * @return [array]     [an array of fields from image]
+	 */
+	function get_image($id) {
+		$query = $this->db->query("select * from uploadmap where id = $id");
+		return($query->result());
+	}
 }

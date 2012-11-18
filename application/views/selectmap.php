@@ -11,3 +11,4 @@
 		</select>
 		<?php echo form_submit('submit', 'Submit'); ?>
 	</div>
+</div>
