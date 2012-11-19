@@ -9,6 +9,7 @@
 		<meta name="viewport" content="width=device-width">
 
 		<link rel="stylesheet" href="assets/css/style.css">
+		<script src="http://code.jquery.com/jquery.min.js"></script>
 	</head>
 	<body>
 		<div id="main">
