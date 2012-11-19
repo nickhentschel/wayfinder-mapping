@@ -10,6 +10,7 @@
 
 		<link rel="stylesheet" href="assets/css/style.css">
 		<script src="http://code.jquery.com/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 	</head>
 	<body>
 		<div id="main">

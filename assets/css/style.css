@@ -73,16 +73,6 @@ a:hover {
 	text-decoration: underline;
 }
 
-.mouse-position {
-	position:fixed;
-	bottom:0;
-	right:0;
-	background: #FFF;
-	font-size: 16px;
-	font-weight: bold;
-	padding: 12px;
-}
-
 input[type="submit"],
 textarea,
 input[type="file"],
@@ -106,15 +96,32 @@ select {
 		padding: 15px;
 	}
 
-	.center-content h3 {
+		.center-content h3 {
+			padding: 12px;
+		}
+
+		.center-content .options {
+			text-align: center;
+		}
+
+			.center-content .options a {
+				padding: 0 10px;
+			}
+
+
+	.mouse-position {
+		position:fixed;
+		bottom:0;
+		right:0;
+		background: #FFF;
+		font-size: 16px;
+		font-weight: bold;
 		padding: 12px;
 	}
 
-	.center-content .options {
-		text-align: center;
-	}
-
-		.center-content .options a {
-			padding: 0 10px;
-		}
-
+#map-holder {
+	width: 800px;
+	height: 500px;
+	overflow: hidden;
+	border: 5px solid #555;
+}
