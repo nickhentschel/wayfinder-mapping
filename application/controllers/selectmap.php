@@ -2,6 +2,7 @@
 
 class SelectMap extends CI_Controller {
 	function index() {
+		$this->load->helper('url');
 		$data = array(
 			'title' => 'Select an existing map'
 		);
@@ -9,7 +10,8 @@ class SelectMap extends CI_Controller {
 		$data['results'] = $this->Map_model->get_all_images();
 
 		if($this->input->post('submit')) {
-			var_dump($this->input->post('image_id'));
+			redirect("/map/display/" . $this->input->post('image_id'), 'location');
+			//var_dump($this->input->post('image_id'));
 		}
 
 		$this->template->load('default', 'selectmap', $data);

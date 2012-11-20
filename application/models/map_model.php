@@ -42,10 +42,11 @@ class Map_model extends CI_Model {
 	 * @return [type]
 	 */
 	function update_db($image_data, $description) {
+		//var_dump($image_data);
 		$this->db->insert('uploadmap',
 			array(
 				'id' => '',
-				'name' => $image_data['raw_name'],
+				'name' => $image_data['file_name'],
 				'description' => $description,
 				'height' => $image_data['image_height'],
 				'width' => $image_data['image_width'],
@@ -60,6 +61,17 @@ class Map_model extends CI_Model {
 	 */
 	function get_all_images() {
 		$query = $this->db->get('uploadmap');
+		return($query->result());
+	}
+
+
+	/**
+	 * Get a single image from the database based on an image id
+	 * @param  [int] $id  [an image id]
+	 * @return [array]     [an array of fields from image]
+	 */
+	function get_image($id) {
+		$query = $this->db->query("select * from uploadmap where id = $id");
 		return($query->result());
 	}
 }
