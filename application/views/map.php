@@ -24,6 +24,19 @@
 		var drag = true;
 		var select = false;
 
+		console.log($('#drag').val());
+
+		$('#drag').click(function() {
+			console.log(this.val());
+			if(this.val() == 'true') {
+				this.val('false');
+				drag = false;
+			} else {
+				this.val('true');
+				drag = true;
+			}
+		});
+
 		$(function() {
 		    $('#map').draggable({
 		    	//containment: "#map-holder",
