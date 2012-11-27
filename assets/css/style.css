@@ -117,6 +117,7 @@ select {
 		font-size: 16px;
 		font-weight: bold;
 		padding: 12px;
+		z-index: 999;
 	}
 
 #canvas-holder {
@@ -124,4 +125,8 @@ select {
 	height: 500px;
 	overflow: hidden;
 	border: 5px solid #555;
+}
+
+#map-title {
+	color: #FFF;
 }

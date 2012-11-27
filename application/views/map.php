@@ -1,24 +1,57 @@
-<br />
-<h3>Map!</h3>
-<br />
+<h3 id="map-title"><?php echo $image[0]->name . " - " . $image[0]->description; ?></h3>
 <h2 class="mouse-position">
 0, 0
 </h2>
 <br />
 
-<div id="map-holder">
-	<img id="map" src="<?php echo "assets/uploads/" . $image[0]->name; ?>" />
-</div>
-
-<button id="drag" value="true">Drag Mode On</button><button id="select" value="true">Select Mode Off</button>
-
-<!--
 <div id="canvas-holder">
-	<canvas id="map-holder" height="500" width="800"></canvas>
+	<canvas id="map-holder" height="<?php echo $image[0]->height; ?>" width="<?php echo $image[0]->width; ?>"></canvas>
 </div>
--->
-<script>
 
+<!-- <div id="map-holder">
+	<img id="map" src="<?php // echo "assets/uploads/" . $image[0]->name; ?>" />
+</div> -->
+
+<script>
+	
+	jQuery(document).ready(function(){
+		
+		var source ="<?php echo "assets/uploads/" . $image[0]->name; ?>";
+		var canvas = $('#map-holder');
+		var context = canvas[0].getContext('2d');
+		var imageObj = new Image();
+		var imgWidth = <?php echo $image[0]->width; ?>;
+		var imgHeight = <?php echo $image[0]->height; ?>;
+
+		imageObj.onload = function() {
+			context.drawImage(imageObj, 0, 0, imgWidth, imgHeight);
+		};
+		imageObj.src = source;
+
+		$(function() {
+		    $('#map-holder').draggable({
+		    	scroll: false
+		    });
+		});
+
+		canvas.mousemove(function(e) {
+			var offset = $(this).offset();
+			var x = e.clientX - offset.left;
+			var y = e.clientY - offset.top;	
+			$('.mouse-position').html(x +', '+ y);
+		});
+
+		canvas.click(function() {
+
+		});
+
+		$('#canvas-holder').height($(window).height() - 60);
+		$('#canvas-holder').width($(window).width());
+
+
+	});
+
+	/*
 	jQuery(document).ready(function() {
 
 		var drag = true;
@@ -62,45 +95,6 @@
 			}
 		});
 	});
+*/	
 
-
-	/*
-	jQuery(document).ready(function(){
-		
-		var source ="<?//php echo "assets/uploads/" . $image[0]->name; ?>";
-		var canvas = $('#map-holder');
-		var rect = canvas[0].getBoundingClientRect();
-		var context = canvas[0].getContext('2d');
-		var imageObj = new Image();
-		var dragging = false;
-
-
-		imageObj.onload = function() {
-			context.drawImage(imageObj, 0, 0, 800, 500);
-		};
-		imageObj.src = source; 
-
-		canvas.mousemove(function(e){
-			var x = (e.pageX - rect.left);
-			var y = (e.pageY - rect.top);
-			$('.mouse-position').html(x +', '+ y);
-			if(dragging) {
-				context.clearRect ( 0 , 0 , 800 , 500 );
-				context.drawImage(imageObj, x, y);
-			}
-		});
-
-		imageObj.mousedown(function() {
-			dragging = true;
-			console.log(dragging);
-		});
-
-		imageObj.mouseup(function() {
-			dragging = false;
-			console.log(dragging);
-		});
-
-
-	})
-*/
 </script>
