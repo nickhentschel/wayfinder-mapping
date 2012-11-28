@@ -128,6 +128,14 @@ select {
 		display: block;
 	}
 
+	#clear-dots {
+		position:fixed;
+		bottom:0;
+		right:210px;		
+		z-index: 999;
+		display: block;
+	}
+
 #canvas-holder {
 	width: 800px;
 	height: 500px;

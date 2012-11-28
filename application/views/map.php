@@ -5,6 +5,7 @@
 0, 0
 </h2>
 <button id="remove-dot">Undo</button>
+<button id="clear-dots">Clear</button>
 <br />
 
 <div id="canvas-holder">
@@ -79,6 +80,14 @@
 			if(dots.length > 0) {
 				dots.pop();
 				redrawWithDots();
+			}
+		});
+
+		$('#clear-dots').click(function() {
+			if(dots.length > 0) {
+				dots.length = 0;
+				context.clearRect(0, 0, <?php echo $image[0]->width; ?>, <?php echo $image[0]->height; ?>);
+				context.drawImage(imageObj, 0, 0);
 			}
 		});
 
