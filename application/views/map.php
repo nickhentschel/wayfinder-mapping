@@ -58,15 +58,14 @@
 				var x = e.clientX - offset.left;
 				var y = e.clientY - offset.top;	
 			
-				context.fillStyle = "#0F0";
-				context.fillRect(x, y, 6, 6);
-				/*
+				/*context.fillStyle = "#0F0";
+				context.fillRect(x, y, 6, 6); */
+				
 				context.beginPath();
 				context.arc(x,y,3,0,2*Math.PI);
 				context.fillStyle = 'green';
       			context.fill();
-				context.stroke();
-				*/	
+				context.stroke();				
 			}
 		});
 	});
