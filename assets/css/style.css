@@ -120,6 +120,14 @@ select {
 		z-index: 999;
 	}
 
+	#remove-dot {
+		position:fixed;
+		bottom:0;
+		right:140px;		
+		z-index: 999;
+		display: block;
+	}
+
 #canvas-holder {
 	width: 800px;
 	height: 500px;

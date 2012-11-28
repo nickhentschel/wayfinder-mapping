@@ -4,6 +4,7 @@
 <h2 class="mouse-position">
 0, 0
 </h2>
+<button id="remove-dot">Undo</button>
 <br />
 
 <div id="canvas-holder">
@@ -24,7 +25,8 @@
 		var imageObj = new Image();
 		var imgWidth = <?php echo $image[0]->width; ?>;
 		var imgHeight = <?php echo $image[0]->height; ?>;
-		scrolling = false;
+		var scrolling = false;
+		var dots = [];
 
 		$('#canvas-holder').height($(window).height() - $('#title-padding').height() - 45);
 		$('#canvas-holder').width($(window).width());
@@ -65,9 +67,31 @@
 				context.arc(x,y,3,0,2*Math.PI);
 				context.fillStyle = 'green';
       			context.fill();
-				context.stroke();				
+				context.stroke();
+				var coords = [Math.floor(x), Math.floor(y)];
+				dots.push(coords);		
 			}
 		});
+
+		$('#remove-dot').click(function() {
+			if(dots.length > 0) {
+				dots.pop();
+				redrawWithDots();
+			}
+		});
+
+		function redrawWithDots() {
+			context.clearRect();
+			context.drawImage(imageObj, 0, 0, imgWidth, imgHeight);
+			imageObj.src = source;
+			for (var i = dots.length - 1; i >= 0; i--) {
+				context.beginPath();
+				context.arc(dots[i][0],dots[i][1],3,0,2*Math.PI);
+				context.fillStyle = 'green';
+      			context.fill();
+				context.stroke();
+			};
+		}
 	});
 
 	/*
