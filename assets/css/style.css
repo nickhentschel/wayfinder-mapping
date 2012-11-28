@@ -125,8 +125,13 @@ select {
 	height: 500px;
 	overflow: hidden;
 	border: 5px solid #555;
+	margin: 0; padding: 0;
 }
 
-#map-title {
-	color: #FFF;
+#title-padding {
+	height: 20px;
 }
+
+	#map-title {
+		color: #FFF;
+	}

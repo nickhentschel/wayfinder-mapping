@@ -1,4 +1,6 @@
-<h3 id="map-title"><?php echo $image[0]->name . " - " . $image[0]->description; ?></h3>
+<div id="title-padding">
+	<h3 id="map-title"><?php echo $image[0]->name . " - " . $image[0]->description; ?></h3>
+</div>
 <h2 class="mouse-position">
 0, 0
 </h2>
@@ -28,9 +30,12 @@
 		};
 		imageObj.src = source;
 
-		$(function() {
+				$(function() {
 		    $('#map-holder').draggable({
-		    	scroll: false
+		    	scroll: false,
+		    	start: function(event, ui) {
+			        $(this).addClass('noclick');
+			    }
 		    });
 		});
 
@@ -38,14 +43,33 @@
 			var offset = $(this).offset();
 			var x = e.clientX - offset.left;
 			var y = e.clientY - offset.top;	
-			$('.mouse-position').html(x +', '+ y);
+			$('.mouse-position').html(Math.floor(x) +', '+ Math.floor(y));
 		});
 
-		canvas.click(function() {
-
+		canvas.click(function(e) {
+			if ($(this).hasClass('noclick')) {
+		        $(this).removeClass('noclick');
+		    } else {
+				var offset = $(this).offset();
+				var x = e.clientX - offset.left;
+				var y = e.clientY - offset.top;	
+			
+				context.fillStyle = "#0F0";
+				context.fillRect(x, y, 6, 6);
+				/*
+				context.beginPath();
+				context.arc(x,y,3,0,2*Math.PI);
+				context.fillStyle = 'green';
+      			context.fill();
+				context.stroke();
+				*/	
+			}
 		});
 
-		$('#canvas-holder').height($(window).height() - 60);
+		$('#canvas-holder').height($(window).height() - $('#title-padding').height() - 45);
+		$('#canvas-holder').width($(window).width());
+
+		$('#canvas-holder').height($(window).height() - $('#title-padding').height() - 40);
 		$('#canvas-holder').width($(window).width());
 
 
