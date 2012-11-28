@@ -11,4 +11,5 @@
 		</select>
 		<?php echo form_submit('submit', 'Submit'); ?>
 	</div>
+	<a href="/wayfinder-mapping">&larr; Go back</a>
 </div>

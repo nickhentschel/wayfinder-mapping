@@ -9,4 +9,5 @@
 		echo form_close();		
 		?>
 	</div>
+	<a href="/wayfinder-mapping">&larr; Go back</a>
 </div>

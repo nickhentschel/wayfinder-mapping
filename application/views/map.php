@@ -36,14 +36,16 @@
 		};
 		imageObj.src = source;
 
-		$(function() {
-		    $('#map-holder').draggable({
-		    	scroll: false,
-		    	start: function(event, ui) {
-			        scrolling = true;
-			    }
-		    });
-		});
+		if(imgWidth > $(window).width() || imgHeight > $(window).height()) {
+			$(function() {
+			    $('#map-holder').draggable({
+			    	scroll: false,
+			    	start: function(event, ui) {
+				        scrolling = true;
+				    }
+			    });
+			});
+		};
 
 		canvas.mousemove(function(e) {
 			var offset = $(this).offset();
@@ -81,10 +83,12 @@
 		});
 
 		function redrawWithDots() {
-			context.clearRect();
-			context.drawImage(imageObj, 0, 0, imgWidth, imgHeight);
-			imageObj.src = source;
-			for (var i = dots.length - 1; i >= 0; i--) {
+			context.clearRect(0, 0, <?php echo $image[0]->width; ?>, <?php echo $image[0]->height; ?>);
+			context.drawImage(imageObj, 0, 0);
+			//imageObj.src = source;
+			console.log("image draw");
+			for (var i = 0; i < dots.length; i++) {
+				console.log("dot draw");
 				context.beginPath();
 				context.arc(dots[i][0],dots[i][1],3,0,2*Math.PI);
 				context.fillStyle = 'green';
@@ -93,51 +97,5 @@
 			};
 		}
 	});
-
-	/*
-	jQuery(document).ready(function() {
-
-		var drag = true;
-		var select = false;
-
-		console.log($('#drag').val());
-
-		$('#drag').click(function() {
-			console.log(this.val());
-			if(this.val() == 'true') {
-				this.val('false');
-				drag = false;
-			} else {
-				this.val('true');
-				drag = true;
-			}
-		});
-
-		$(function() {
-		    $('#map').draggable({
-		    	//containment: "#map-holder",
-		    	scroll: false
-		    });
-		});
-
-		$('#map').mousemove(function(e) {
-			if(drag) {
-				var offset = $(this).offset();
-				var x = e.clientX - offset.left;
-				var y = e.clientY - offset.top;	
-				$('.mouse-position').html(x +', '+ y);
-			}
-		});
-
-		$('#map').click(function(e) {
-			if(select) {
-				var offset = $(this).offset();
-				var x = e.clientX - offset.left;
-				var y = e.clientY - offset.top;	
-				alert(x +', '+ y);
-			}
-		});
-	});
-*/	
 
 </script>
