@@ -98,13 +98,13 @@
 			//imageObj.src = source;
 			console.log("image draw");
 			for (var i = 0; i < dots.length; i++) {
-				console.log("dot draw");
+				//console.log("dot draw");
 				context.beginPath();
 				context.arc(dots[i][0],dots[i][1],3,0,2*Math.PI);
 				context.fillStyle = 'green';
       			context.fill();
 				context.stroke();
-			};
+			}
 		}
 	});
 
