@@ -40,7 +40,8 @@
 		if(imgWidth > $(window).width() || imgHeight > $(window).height()) {
 			$(function() {
 			    $('#map-holder').draggable({
-			    	scroll: false,
+			    	containment: [(-imgWidth + $(window).width()), -(imgHeight - $(window).height()), 0, 0],
+			    	scroll: false,			    	
 			    	start: function(event, ui) {
 				        scrolling = true;
 				    }
