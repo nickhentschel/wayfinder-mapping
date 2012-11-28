@@ -24,17 +24,21 @@
 		var imageObj = new Image();
 		var imgWidth = <?php echo $image[0]->width; ?>;
 		var imgHeight = <?php echo $image[0]->height; ?>;
+		scrolling = false;
+
+		$('#canvas-holder').height($(window).height() - $('#title-padding').height() - 45);
+		$('#canvas-holder').width($(window).width());
 
 		imageObj.onload = function() {
 			context.drawImage(imageObj, 0, 0, imgWidth, imgHeight);
 		};
 		imageObj.src = source;
 
-				$(function() {
+		$(function() {
 		    $('#map-holder').draggable({
 		    	scroll: false,
 		    	start: function(event, ui) {
-			        $(this).addClass('noclick');
+			        scrolling = true;
 			    }
 		    });
 		});
@@ -47,8 +51,8 @@
 		});
 
 		canvas.click(function(e) {
-			if ($(this).hasClass('noclick')) {
-		        $(this).removeClass('noclick');
+			if (scrolling == true) {
+		        scrolling = false;
 		    } else {
 				var offset = $(this).offset();
 				var x = e.clientX - offset.left;
@@ -65,14 +69,6 @@
 				*/	
 			}
 		});
-
-		$('#canvas-holder').height($(window).height() - $('#title-padding').height() - 45);
-		$('#canvas-holder').width($(window).width());
-
-		$('#canvas-holder').height($(window).height() - $('#title-padding').height() - 40);
-		$('#canvas-holder').width($(window).width());
-
-
 	});
 
 	/*
